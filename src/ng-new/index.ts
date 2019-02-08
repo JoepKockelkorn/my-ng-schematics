@@ -1,6 +1,8 @@
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 
-export function ngNew(_options: any): Rule {
+import { Schema } from './schema';
+
+export function ngNew(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     tree.create('hello', 'world');
     return tree;
