@@ -6,10 +6,23 @@
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
   },
+  "lint-staged": {
+    "*.ts": [
+      "pretty-quick --staged",
+      "git add",
+      "tslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "keywords": [
     "schematics"
   ],
-  "author": "",
+  "author": "Joep Kockelkorn",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
@@ -19,5 +32,14 @@
     "@types/node": "^8.0.31",
     "jasmine": "^3.0.0",
     "typescript": "~3.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.5.0",
+    "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.3",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
+    "tslint": "^5.12.1"
   }
 }
