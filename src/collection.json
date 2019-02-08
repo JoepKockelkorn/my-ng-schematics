@@ -4,7 +4,7 @@
     "ng-new": {
       "description": "My custom ng-new schematic.",
       "schema": "./ng-new/schema.json",
-      "factory": "./ng-new/index#ngNew"
+      "factory": "./ng-new"
     }
   }
 }
