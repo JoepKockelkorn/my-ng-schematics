@@ -96,8 +96,7 @@
     "routing": {
       "type": "boolean",
       "description": "Generates a routing module.",
-      "default": false,
-      "x-prompt": "Would you like to add Angular routing?"
+      "default": true
     },
     "prefix": {
       "type": "string",
@@ -110,23 +109,12 @@
     "style": {
       "description": "The file extension to be used for style files.",
       "type": "string",
-      "default": "css",
-      "x-prompt": {
-        "message": "Which stylesheet format would you like to use?",
-        "type": "list",
-        "items": [
-          { "value": "css", "label": "CSS" },
-          { "value": "scss", "label": "SCSS   [ http://sass-lang.com   ]" },
-          { "value": "sass", "label": "SASS   [ http://sass-lang.com   ]" },
-          { "value": "less", "label": "LESS   [ http://lesscss.org     ]" },
-          { "value": "styl", "label": "Stylus [ http://stylus-lang.com ]" }
-        ]
-      }
+      "default": "scss"
     },
     "skipTests": {
       "description": "Skip creating spec files.",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "alias": "S"
     },
     "createApplication": {

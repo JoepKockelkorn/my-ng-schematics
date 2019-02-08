@@ -1,4 +1,3 @@
-import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 
@@ -7,14 +6,17 @@ import { Schema } from './schema';
 const collectionPath = path.join(__dirname, '../collection.json');
 
 describe('ng-new', () => {
-  it('works', () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
-    const options: Schema = {
-      name: 'test',
-      version: '7'
-    };
-    const tree = runner.runSchematic('ng-new', options, Tree.empty());
+  const defaultOptions: Schema = {
+    name: 'mySchematicWorkspace',
+    version: '7.0.0'
+  };
+  const schematicRunner = new SchematicTestRunner('schematics', collectionPath);
 
-    expect(tree.files.length).toEqual(1);
+  it('should call external @schematics/angular', () => {
+    const options = { ...defaultOptions };
+    const host = schematicRunner.runSchematic('ng-new', options);
+    const { files } = host;
+
+    expect(files).toContain(`/${options.name}/angular.json`);
   });
 });

@@ -1,10 +1,17 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { chain, externalSchematic, Rule, Tree } from '@angular-devkit/schematics';
+import { validateProjectName } from '@schematics/angular/utility/validation';
 
 import { Schema } from './schema';
 
-export default function(_options: Schema): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    tree.create('hello', 'world');
-    return tree;
+export default function(options: Schema): Rule {
+  return (_tree: Tree) => {
+    validateProjectName(options.name);
+
+    return chain([
+      externalSchematic('@schematics/angular', 'ng-new', {
+        ...options,
+        skipInstall: true
+      })
+    ]);
   };
 }
