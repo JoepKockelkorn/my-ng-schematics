@@ -2,7 +2,7 @@
 
 ## Todo
 
-- [ ] overwrite global tslint (maybe add no-console-log)
+- [x] overwrite global tslint ~~(maybe add no-console-log)~~
 - [ ] add .vscode related files
   - [ ] launch.json
   - [ ] settings.json (ts, force-aligned)
