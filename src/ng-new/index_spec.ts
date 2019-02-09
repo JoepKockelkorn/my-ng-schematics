@@ -1,4 +1,4 @@
-import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
+import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -20,16 +20,23 @@ describe('ng-new', () => {
     expect(files).toContain(`/${options.name}/angular.json`);
   });
 
-  it('should have the tslint.json file overwritten', () => {
+  it('should have various files overwritten', () => {
     const options = { ...defaultOptions };
     const host = schematicRunner.runSchematic('ng-new', options);
-    const { files } = host;
-    const tslintPath = `/${options.name}/tslint.json`;
-    expect(files).toContain(tslintPath);
-    const content = host.readContent(tslintPath);
-    expect(() => JSON.parse(content)).not.toThrow();
-    const json = JSON.parse(content);
-    const expectedJson = JSON.parse(fs.readFileSync(`src/ng-new/files/tslint.json`).toString());
-    expect(json).toEqual(expectedJson);
+    const filesToTest = ['tslint.json', '.vscode/launch.json', '.vscode/settings.json'];
+    for (const file of filesToTest) {
+      testFile(host, options.name, file);
+    }
   });
 });
+
+function testFile(host: UnitTestTree, name: string, file: string) {
+  const filePath = `/${name}/${file}`;
+  const { files } = host;
+  expect(files).toContain(filePath);
+  const content = host.readContent(filePath);
+  expect(() => JSON.parse(content)).not.toThrow();
+  const json = JSON.parse(content);
+  const expectedJson = JSON.parse(fs.readFileSync(`src/ng-new/files/${file}`).toString());
+  expect(json).toEqual(expectedJson);
+}

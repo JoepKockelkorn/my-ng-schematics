@@ -15,7 +15,7 @@ import { validateProjectName } from '@schematics/angular/utility/validation';
 
 import { Schema } from './schema';
 
-function overWriteTslintJson(options: Schema) {
+function overWriteFiles(options: Schema) {
   return (host: Tree) => {
     let newProjectRoot = '';
     try {
@@ -37,7 +37,7 @@ export default function(options: Schema): Rule {
         ...options,
         skipInstall: true
       }),
-      overWriteTslintJson(options)
+      overWriteFiles(options)
     ]);
   };
 }

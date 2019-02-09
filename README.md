@@ -3,9 +3,9 @@
 ## Todo
 
 - [x] overwrite global tslint ~~(maybe add no-console-log)~~
-- [ ] add .vscode related files
-  - [ ] launch.json
-  - [ ] settings.json (ts, force-aligned)
+- [x] add .vscode related files
+  - [x] launch.json
+  - [x] settings.json (ts, force-aligned)
 - [ ] change app tslint
 - [ ] add prettier && pretty-quick:
   - [ ] package.json
