@@ -23,7 +23,7 @@ describe('ng-new', () => {
   it('should have various files overwritten', () => {
     const options = { ...defaultOptions };
     const host = schematicRunner.runSchematic('ng-new', options);
-    const filesToTest = ['tslint.json', '.vscode/launch.json', '.vscode/settings.json'];
+    const filesToTest = ['tslint.json', '.vscode/launch.json', '.vscode/settings.json', 'src/tslint.json'];
     for (const file of filesToTest) {
       testFile(host, options.name, file);
     }

@@ -6,7 +6,7 @@
 - [x] add .vscode related files
   - [x] launch.json
   - [x] settings.json (ts, force-aligned)
-- [ ] change app tslint
+- [x] change app tslint
 - [ ] add prettier && pretty-quick:
   - [ ] package.json
   - [ ] .prettierrc
